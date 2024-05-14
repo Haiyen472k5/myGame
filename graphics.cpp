@@ -77,14 +77,12 @@ void Graphics::init() {
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED |
                                               SDL_RENDERER_PRESENTVSYNC);
     if (renderer == nullptr) logErrorAndExit("CreateRenderer", SDL_GetError());
-
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
     if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
     {
         logErrorAndExit("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
     }
-
     if (TTF_Init() == -1){
         logErrorAndExit("SDL_ttf could not initialize! SDL_ttf Error: ", TTF_GetError());
     }
@@ -108,7 +106,6 @@ SDL_Texture* Graphics::loadTexture(const char *filename)
     SDL_Texture *texture = IMG_LoadTexture(renderer, filename);
     if (texture == NULL)
         SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "Load texture %s", IMG_GetError());
-
     return texture;
 }
 
@@ -119,21 +116,9 @@ void Graphics::renderTexture(SDL_Texture *texture, int x, int y)
     dest.x = x;
     dest.y = y;
     SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
-
     SDL_RenderCopy(renderer, texture, NULL, &dest);
 }
 
-void Graphics::blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y)
-{
-    SDL_Rect dest;
-
-    dest.x = x;
-    dest.y = y;
-    dest.w = src->w;
-    dest.h = src->h;
-
-    SDL_RenderCopy(renderer, texture, src, &dest);
-}
 void Graphics::initGame(){
     init();
     background = loadTexture("image//menu.png");
@@ -214,12 +199,10 @@ SDL_Texture* Graphics::renderText(const char* text, TTF_Font* font, SDL_Color te
         SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "Render text surface %s", TTF_GetError());
         return nullptr;
     }
-
     SDL_Texture* texture = SDL_CreateTextureFromSurface( renderer, textSurface );
     if( texture == nullptr ) {
         SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "Create texture from text %s", SDL_GetError());
     }
-
     SDL_FreeSurface( textSurface );
     return texture;
 }
@@ -263,7 +246,6 @@ void Graphics::setFrame(int n, int m){
     renderTexture(cell_x, 685, 140);
     render_x_(n);
     render_o_(m);
-
 }
 
 void  Graphics::renderMenu_start(){
@@ -275,8 +257,6 @@ void  Graphics::renderMenu_start(){
     renderTexture(play, 265, 205);
     renderTexture(exit, 305, 301);
     presentScene();
-
-
 }
 
 

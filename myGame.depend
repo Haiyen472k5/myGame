@@ -15,7 +15,7 @@
 
 1715451974 c:\users\haiye\onedrive\desktop\mygame\defs.h
 
-1715671520 source:c:\users\haiye\onedrive\desktop\mygame\main.cpp
+1715672156 source:c:\users\haiye\onedrive\desktop\mygame\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -31,7 +31,7 @@
 
 1715656933 c:\users\haiye\onedrive\desktop\mygame\board.h
 
-1715671251 source:c:\users\haiye\onedrive\desktop\mygame\game.cpp
+1715672218 source:c:\users\haiye\onedrive\desktop\mygame\game.cpp
 	"Game.h"
 	<iostream>
 

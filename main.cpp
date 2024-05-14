@@ -27,7 +27,6 @@ int main(int argc, char *argv[]){
                 tictactoe.graphics.renderMenu_exit();
                 if(app_event.type == SDL_MOUSEBUTTONDOWN)
                     Mix_PlayChannel(-1, tictactoe.graphics.gChunk[1], 0);
-
             }
             else if (x >= 267 && y>= 224 && x <=536 && y <= 280){
                 tictactoe.graphics.renderMenu_start();
@@ -38,7 +37,6 @@ int main(int argc, char *argv[]){
                 tictactoe.graphics.renderMenu();
             }
             app.update(&app_event);
-
         }
         else if (app.app_state == PLAYING_STATE){
             bool _quit = false;
@@ -49,7 +47,6 @@ int main(int argc, char *argv[]){
                 SDL_PollEvent(&event);
                 switch (tictactoe.game_state){
                     case RUNNING_STATE:
-
                         tictactoe.update(&event);
                         if (event.type == SDL_MOUSEBUTTONDOWN){
                             int i, j;

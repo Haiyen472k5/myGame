@@ -19,7 +19,6 @@ struct App{
             int x, y;
             SDL_GetMouseState(&x, &y);
             if (x >= 308 && y>= 315 && x <= 485 && y<=375){
-
                 app_state = QUIT_STATE;
             }
             else if (x >= 267 && y>= 224 && x <=536 && y <= 280){
