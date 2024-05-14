@@ -90,107 +90,47 @@ bool Board::checkCols(){
 }
 
 bool Board::checkDiags(){
-    for (int i = 0; i <= BOARD_SIZE - win; i++){
-        int tmp = 0;
-        for (int j = i; j <= BOARD_SIZE - win; j++){
-            if (!isFieldEmpty(tmp, j)){
+    for (int cols = 0; cols <= BOARD_SIZE-win; cols++){
+        int tmp = cols;
+        for (int rows = 0; rows <= BOARD_SIZE-win; rows++){
+            if (!isFieldEmpty(rows, tmp)){
+                char checkVal = BOARD_PIECE[rows][tmp];
+                int new_row = rows+1;
+                int new_cols = tmp+1;
                 int count = 1;
-                int tmp_2 = j;
-                int tmp_3 = tmp;
-                char checkVal = BOARD_PIECE[tmp][j];
-                ++tmp_3;
-                ++tmp_2;
-                while (tmp_3 < j+win){
-                    if (BOARD_PIECE[tmp_3][tmp_2] != checkVal) break;
-                    else {
-                        tmp_3++;
-                        tmp_2++;
-                        count++;
-                    }
-                }
-                if (count == win){
-                    if (checkVal == X_CELL) board_state = X_WON;
-                    else board_state = O_WON;
-                    return true;
-                }
-            }
-            else tmp++;
-        }
-    }
-        ///right cols
-    for (int i = BOARD_SIZE-1; i >= win - 1; i--){
-        int tmp = 0;
-        for (int j = i; j >= win - 1; j--){
-            if (!isFieldEmpty(tmp,j)){
-                int count = 1;
-                int tmp_2 = j;
-                int limit = tmp+win;
-                int tmp_3 = tmp;
-                char checkVal = BOARD_PIECE[tmp][j];
-                ++tmp_3;
-                --tmp_2;
-                while (tmp_3 < limit){
-                    if (BOARD_PIECE[tmp_3][tmp_2] != checkVal) break;
-                    else {
-                        count++;
-                        tmp_2--;
-                        tmp_3++;
-                    }
-                }
-                if (count == win){
-                    if (checkVal == X_CELL) board_state = X_WON;
-                    else board_state = O_WON;
-                    return true;
-                }
-            }
-            else tmp++;
-        }
-    }
-    for (int i = 1; i <= BOARD_SIZE - win; i++){
-        int tmp = 0;///col
-        for (int j = i; j <= BOARD_SIZE - win; j++){
-            if (!isFieldEmpty(j, tmp)){
-                int count = 1;
-                int tmp_2 = j;
-                int tmp_3 = tmp;
-                int limit = tmp+win;
-                char checkVal = BOARD_PIECE[j][tmp];
-                ++tmp_3;
-                ++tmp_2;
-                while (tmp_3 < limit){
-                    if (BOARD_PIECE[tmp_2][tmp_3] != checkVal) break;
-                    else {
-                        tmp_3++;
-                        tmp_2++;
-                        count++;
-                    }
-                }
-                if (count == win){
-                    if (checkVal == X_CELL) board_state = X_WON;
-                    else board_state = O_WON;
-                    return true;
-                }
-            }
-            else tmp++;
-        }
-    }
-    for (int i = 1; i <= BOARD_SIZE - win; i++){
-        int tmp = BOARD_SIZE-1;
-        for (int j = i ; j <= BOARD_SIZE-win; j++){
-            if (!isFieldEmpty(j, tmp)){
-                int count = 1;
-                int tmp_2 = j;
-                int tmp_3 = tmp;
-                int limit = tmp-win;
-                char checkVal = BOARD_PIECE[j][tmp];
-                tmp_2++;
-                tmp_3--;
-                while (tmp_3 > limit){
-                    if (BOARD_PIECE[tmp_2][tmp_3] != checkVal) break;
+                while (count < win && new_row < BOARD_SIZE && new_cols < BOARD_SIZE){
+                    if (BOARD_PIECE[new_row][new_cols] != checkVal) break;
                     else{
                         count++;
-                        tmp_3--;
-                        tmp_2++;
+                        new_row++;
+                        new_cols++;
+                    }
+                }
+
+                if (count == win){
+                    if (checkVal == X_CELL) board_state = X_WON;
+                    else board_state = O_WON;
+                    return true;
+                }
+            }
+            tmp++;
+        }
+    }
+
+    for (int col = BOARD_SIZE-1; col >= win-1; col--){
+        int tmp = col;
+        for (int row = 0; row <= BOARD_SIZE-win; row++){
+            if (!isFieldEmpty(row, tmp)){
+                char checkVal = BOARD_PIECE[row][tmp];
+                int new_row = row+1;
+                int new_col = tmp-1;
+                int count = 1;
+                while (count < win && new_row < BOARD_SIZE && new_col >= 0){
+                    if (BOARD_PIECE[new_row][new_col] != checkVal) break;
+                    else{
+                        count++;
+                        new_row++;
+                        new_col--;
                     }
                 }
                 if (count == win){
@@ -199,8 +139,62 @@ bool Board::checkDiags(){
                     return true;
                 }
             }
-            else tmp--;
+            tmp--;
+        }
+    }
+
+    for (int row = 1; row <= BOARD_SIZE - win; row++){
+        int tmp = row;
+        for (int col = 0; col <= BOARD_SIZE-win; col++){
+            if (!isFieldEmpty(tmp, col)){
+                char checkVal = BOARD_PIECE[tmp][col];
+                int count = 1;
+                int new_row = tmp+1;
+                int new_col = col+1;
+                while (count < win && new_row < BOARD_SIZE && new_col < BOARD_SIZE){
+                    if (BOARD_PIECE[new_row][new_col] != checkVal) break;
+                    else{
+                        count++;
+                        new_row++;
+                        new_col++;
+                    }
+                }
+                if (win == count){
+                    if (checkVal == X_CELL) board_state = X_WON;
+                    else board_state = O_WON;
+                    return true;
+                }
+            }
+            tmp++;
+        }
+    }
+
+    for (int row = 1; row <= BOARD_SIZE-win; row++){
+        int tmp = row;
+        for (int col = BOARD_SIZE-1; col >= win-1; col--){
+            if (!isFieldEmpty(tmp, col)){
+                char checkVal = BOARD_PIECE[tmp][col];
+                int count = 1;
+                int new_row = row+1;
+                int new_col = col-1;
+                while (count < win && new_row < BOARD_SIZE && new_col >= 0){
+                    if (BOARD_PIECE[new_row][new_col] != checkVal) break;
+                    else {
+                        count++;
+                        new_row++;
+                        new_col--;
+                    }
+                }
+                if (win == count){
+                    if (checkVal == X_CELL) board_state = X_WON;
+                    else board_state = O_WON;
+                    return true;
+                }
+            }
+            tmp++;
         }
     }
     return false;
 }
+
+

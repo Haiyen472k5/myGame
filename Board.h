@@ -11,6 +11,7 @@
 #define X_WON 0
 #define O_WON 1
 #define TIE 2
+#include <iostream>
 
 struct Board{
     char BOARD_PIECE[BOARD_SIZE][BOARD_SIZE];
