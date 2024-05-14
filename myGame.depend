@@ -1,0 +1,55 @@
+# depslib dependency file v1.0
+1715671044 source:c:\users\haiye\onedrive\desktop\mygame\graphics.cpp
+	"graphics.h"
+
+1715670616 c:\users\haiye\onedrive\desktop\mygame\graphics.h
+	<string>
+	<iostream>
+	<cstring>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	"defs.h"
+	"Board.h"
+
+1715451974 c:\users\haiye\onedrive\desktop\mygame\defs.h
+
+1715671520 source:c:\users\haiye\onedrive\desktop\mygame\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	"graphics.h"
+	"defs.h"
+	"Board.h"
+	"Game.h"
+	"App.h"
+
+1715446188 source:c:\users\haiye\onedrive\desktop\mygame\board.cpp
+	"Board.h"
+
+1715656933 c:\users\haiye\onedrive\desktop\mygame\board.h
+
+1715671251 source:c:\users\haiye\onedrive\desktop\mygame\game.cpp
+	"Game.h"
+	<iostream>
+
+1715624040 c:\users\haiye\onedrive\desktop\mygame\game.h
+	<SDL.h>
+	"Board.h"
+	"graphics.h"
+
+1715449117 source:c:\users\haiye\onedrive\desktop\mygame\textobject.cpp
+	"TextObject.h"
+
+1715448681 c:\users\haiye\onedrive\desktop\mygame\textobject.h
+	"graphics.h"
+	"SDL_ttf.h"
+
+1715620921 source:c:\users\haiye\onedrive\desktop\mygame\app.cpp
+	"App.h"
+
+1715667206 c:\users\haiye\onedrive\desktop\mygame\app.h
+	<SDL.h>
+
