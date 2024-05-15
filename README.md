@@ -15,7 +15,7 @@
 -Hình ảnh tự thiết kế: https://www.pixilart.com/
 -Font chữ: https://www.fontspace.com/category/ttf
 
-## Ngưỡng điểm mong muốn: 7.5 - 8.5.
+## Ngưỡng điểm mong muốn: 7.0 - 7.5.
 - Game có đồ họa đơn giản
 - Phát triển từ code mẫu nhưng có thay đổi đáng kể và bổ sung thêm tính năng.
   
