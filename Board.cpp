@@ -169,17 +169,17 @@ bool Board::checkDiags(){
         }
     }
 
-    for (int row = 1; row <= BOARD_SIZE-win; row++){
+    for (int row = 1; row <= BOARD_SIZE - win; row++){
         int tmp = row;
         for (int col = BOARD_SIZE-1; col >= win-1; col--){
             if (!isFieldEmpty(tmp, col)){
                 char checkVal = BOARD_PIECE[tmp][col];
                 int count = 1;
-                int new_row = row+1;
+                int new_row = tmp+1;
                 int new_col = col-1;
                 while (count < win && new_row < BOARD_SIZE && new_col >= 0){
                     if (BOARD_PIECE[new_row][new_col] != checkVal) break;
-                    else {
+                    else{
                         count++;
                         new_row++;
                         new_col--;
